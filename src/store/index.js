@@ -4,7 +4,7 @@ const store = {
           title: 'Hey there 👋',
           text: ''
         },
-        types: [{ name: 'warning', active: false }, { name: 'neutral', active: true }, { name: 'success', active: false }, { name: 'error', active: false }],
+        types: [{ name: 'white', active: false }, { name: 'warning', active: false }, { name: 'neutral', active: true }, { name: 'success', active: false }, { name: 'error', active: false }],
         notifStatus: false,
         top: true,
         duration: 7000
@@ -25,6 +25,11 @@ const store = {
     },
     mutations: {
         flashNotif: (state, payload) => {
+          
+          if (payload.vibrate) {
+            window.navigator.vibrate(500)
+          }
+
           if (payload.message.title !== '') {
             state.message.title = payload.message.title
           } else {
@@ -38,24 +43,37 @@ const store = {
             state.top = true
           }
 
-          if (payload.duration !== null || payload.duration !== '') {
-            state.duration = parseInt(payload.duration)
-          } else {
-            state.duration = 7000
-          }
-
           let typesSize = state.types.length
-          for (let i = 0; i < typesSize; i++) {
-            if (state.types[i].name === payload.type) {
-              state.types[i].active = true
-            } else {
+
+          if (payload.type && ['warning', 'white', 'neutral', 'success', 'error'].includes(payload.type)) {
+            for (let i = 0; i < typesSize; i++) {
+              if (state.types[i].name === payload.type) {
+                state.types[i].active = true
+              } else {
+                state.types[i].active = false
+              }
+            }
+          } else {
+            for (let i = 0; i < typesSize; i++) {
               state.types[i].active = false
             }
+            state.types[0].active = true
           }
+          
           state.notifStatus = true
-          setTimeout(() => {
-            state.notifStatus = false
-          }, state.duration)
+
+          state.duration = parseInt(payload.duration)
+
+          if (payload.duration) {
+            setTimeout(() => {
+              state.notifStatus = false
+            }, state.duration)
+          } else {
+            setTimeout(() => {
+              state.notifStatus = false
+            }, 7000)
+          }
+
         },
         closeNotif: state => {
           setTimeout(() => {

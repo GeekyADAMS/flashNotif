@@ -2,11 +2,11 @@
 
 ## About @flash-notif/vue-component
 
-flash-notif is a vue component that let's you show flash notifications across your entire app, depending on user processes, actions and even system processes.
+flash-notif is a vue component that let's you show flash notifications (including vibration) across your entire app, depending on user processes, actions and even system processes.
 
 You can pass neutral messages, warnings, notify of successful processes and failures .e.t.c
 
-This version is dependent uses Vuex store. Hence, you need to have Vuex installed in your Vue project.
+This version is dependent on and uses Vuex store. Hence, you need to have setup Vuex store in your Vue project (majority of people create their vue projects with vuex by default for state management).
 
 
 ### Warning
@@ -22,6 +22,7 @@ npm i flash-notif
 Add these lines to your main.js file
 ```
 import flashNotif from 'flash-notif'
+import '../node_modules/flash-notif/dist/flash-notif.css'
 
 Vue.use(flashNotif, { store })
 ```
@@ -30,7 +31,7 @@ Vue.use(flashNotif, { store })
 
 Add the component anywhere in your App.vue template
 ```
-<flashNotif />
+<flash-Notif />
 ```
 
 ### Step 4: How to show notification to user
@@ -45,7 +46,8 @@ this.$store.dispatch('flashNotif', {
         },
         type: 'notification type e.g. warning, error, success, neutral',
         pos: 'notification position e.g. top, bottom',
-        duration: 'how long you want the notification to stay on the screen in milliseconds e.g 7000 for 7 seconds'
+        duration: 'how long you want the notification to stay on the screen in milliseconds e.g 7000 for 7 seconds',
+        vibrate: true
     })
 ```
 
@@ -57,7 +59,7 @@ import { mapActions } from 'vuex'
 
 Then, add the following to your "methods" property
 ```
-...mapActions('flashNotif')
+...mapActions(['flashNotif'])
 ```
 
 When an event occurs and you want to show notification to the user, just use the following inside that event handler/method/fuction...
@@ -69,7 +71,8 @@ flashNotif({
         },
         type: 'notification type e.g. warning, error, success, neutral',
         pos: 'notification position e.g. top, bottom',
-        duration: 'how long you want the notification to stay on the screen in milliseconds e.g 7000 for 7 seconds'
+        duration: 'how long you want the notification to stay on the screen in milliseconds e.g 7000 for 7 seconds',
+        vibrate: true
     })
 ```
 
@@ -94,6 +97,16 @@ duration: 5000
 ```
 Note: It is ok to pass the value as string or integer, anyone works.
 
+#### vibrate
+In other to shift user attention to notifications when they pop up, the 'vibrate' property allows vibrates user device in a flash when they are on mobile.
+
+This property can either take true or false as value depending if you want a notification to vibrate user's device or not.
+Notifications vibrate by default or when vibrate property is not defined.
+```
+vibrate: true
+```
+Note: It is ok to pass the value as string or integer, anyone works.
+
 
 ### Examples
 Success Notification:
@@ -101,15 +114,20 @@ Success Notification:
 ![Success notification](https://res.cloudinary.com/geekyadams/image/upload/v1593531281/app-success_vuok3q.png)
 
 ```
-flashNotif({
-        message: {
-        title: 'Application Successful',
-        text: 'Your application details has been sent to your mail. Please proceed from there.'
-        },
-        type: 'success',
-        pos: 'top',
-        duration: 7000
-    })
+if (appSuccess) {
+
+    flashNotif({
+            message: {
+            title: 'Application Successful',
+            text: 'Your application details has been sent to your mail. Please proceed from there.'
+            },
+            type: 'success',
+            pos: 'top',
+            duration: 7000,
+            vibrate: false
+        })
+
+}
 ```
 
 #### other example
