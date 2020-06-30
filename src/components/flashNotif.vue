@@ -1,11 +1,11 @@
 <template>
-    <div :class="{warnTheme: notifTypes[0].active, neutralTheme: notifTypes[1].active, successTheme: notifTypes[2].active, errTheme: notifTypes[3].active, 'animated slideInRight pop-up fixed': true, 'slideOutRight': !notifStatus, top: notifTopPos, bottom: !notifTopPos}"  v-if="notifStatus">
+    <div :class="{whiteTheme: notifTypes[0].active, warnTheme: notifTypes[1].active, neutralTheme: notifTypes[2].active, successTheme: notifTypes[3].active, errTheme: notifTypes[4].active, 'animated slideInRight pop-up fixed': true, 'slideOutRight': !notifStatus, top: notifTopPos, bottom: !notifTopPos}"  v-if="notifStatus">
         <div class="flex-row w100p space-btw">
             <div class="flex-col quicksand">
                 <h4 class="bold">{{notifMessage.title}}</h4>
                 <p class="pad-top-p5 text-p8" >{{notifMessage.text}}</p>
             </div>
-            <img src="@/assets/img/cancel-white.png" class="cancel-icon ml-1 point" alt="" @click="closeNotif">
+            <img src="https://res.cloudinary.com/geekyadams/image/upload/v1593559828/cancel-white_qkgt2d.png" class="cancel-icon ml-1 point" alt="" @click="closeNotif">
         </div>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     closeNotif () {
-        this.$store.dispatch('closeNotif')
+      this.$store.dispatch('closeNotif')
     }
   }
 }
@@ -65,9 +65,10 @@ export default {
         border-radius: 5px;
         box-shadow: 0 12px 24px rgba(0,0,0,.1);
         animation-duration: .7s;
+        text-rendering: optimizeLegibility;
     }
     .top{
-      top: 15vh;
+      top: 11vh;
     }
     .bottom{
       bottom: 10vh;
@@ -75,6 +76,10 @@ export default {
     .warnTheme{
         background: orange;
         color: white
+    }
+    .whiteTheme{
+        background: white;
+        color: #222222;
     }
     .neutralTheme{
         background: #222222;

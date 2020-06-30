@@ -1,12 +1,9 @@
 {
   "name": "flash-notif",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "main": "./dist/flash-notif.common.js",
   "files": [
-    "dist/*",
-    "src/*",
-    "*.json",
-    "*.js"
+    "dist/*"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -14,6 +11,20 @@
     "build-lib": "vue-cli-service build --target lib --name flash-notif src/main.js",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeekyADAMS/flashNotif"
+  },
+  "keywords": [
+    "vuejs",
+    "notification",
+    "alert",
+    "flash notification",
+    "vue notification",
+    "vue alert"
+  ],
+  "author": "Abdulhakeem Adams <drkeeminc@gmail.com> (https://geekyadams.dev/)",
+  "license": "MIT",
   "dependencies": {
     "core-js": "^3.6.5",
     "vue": "^2.6.11"
