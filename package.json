@@ -1,10 +1,17 @@
 {
   "name": "flash-notif",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "./dist/flash-notif.common.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-lib": "vue-cli-service build --target lib --name flash-notif src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

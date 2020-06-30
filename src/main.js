@@ -1,8 +1,14 @@
-import Vue from 'vue'
-import App from './App.vue'
+import flashNotif from './components/flashNotif.vue'
+import store from './store'
 
-Vue.config.productionTip = false
-
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+export default {
+  install (Vue, options) {
+    if (!options || !options.store) {
+      throw new Error('Please initialise plugin with a Vuex store.')
+    }
+    
+    options.store.registerModule('flash-notif', store)
+ 
+    Vue.component('flashNotif', flashNotif)
+  }
+}
