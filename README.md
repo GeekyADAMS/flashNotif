@@ -98,7 +98,7 @@ Note: It is ok to pass the value as string or integer, anyone works.
 ### Examples
 Success Notification:
 
-![Success notification](https:///res-console.cloudinary.com/geekyadams/thumbnails/transform/v1/image/upload/v1593531281/https:///res-console.cloudinary.com/geekyadams/thumbnails/transform/v1/image/upload//v1593531281/YXBwLXN1Y2Nlc3NfdnVvazNx/drilldown)
+![Success notification](https://res.cloudinary.com/geekyadams/image/upload/v1593531281/app-success_vuok3q.png)
 
 ```
 flashNotif({
@@ -113,7 +113,7 @@ flashNotif({
 ```
 
 #### other example
-![Welcome notification](https:///res-console.cloudinary.com/geekyadams/thumbnails/transform/v1/image/upload/v1593531965/https:///res-console.cloudinary.com/geekyadams/thumbnails/transform/v1/image/upload//v1593531965/bWFpbC1ub3RpZl9xMW54c2w=/drilldown)
+![Welcome notification](https://res.cloudinary.com/geekyadams/image/upload/v1593531965/mail-notif_q1nxsl.png)
 
 ### Source Code
 Visit [Github Repo](https://github.com/GeekyADAMS/flashNotif).
